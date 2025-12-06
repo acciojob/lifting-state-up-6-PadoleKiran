@@ -1,18 +1,51 @@
-import React from "react"
-export default function TodoList({todos, handleComplete}){
-    return(
-        <div>
-            <h2>Todo List</h2>
+import React from "react";
 
-            {todos.map((todo) => (
-                <div key={todo.id}>
-                    <span style={{textDecoration: todo.compleated ? "line-through" : "none", marginRight: "10px"}}>{todo.title}</span>
+export default function TodoList({ todos, handleComplete }) {
+  return (
+    <div>
+      <h2>Todo List</h2>
 
-                    {!todo.completed && (<button onClick={()=>{handleComplete(todo.id)}}>Complete</button>)}
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <span
+              style={{
+                textDecoration: todo.completed ? "line-through" : "none",
+                marginRight: "10px",
+              }}
+            >
+              {todo.title}
+            </span>
 
-                    {todo.completed && <span></span>}
-                </div>
-            ))}
-        </div>
-    )
+            {!todo.completed && (
+              <button onClick={() => handleComplete(todo.id)}>Complete</button>
+            )}
+
+            {todo.completed && <span></span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
+
+
+
+// import React from "react"
+// export default function TodoList({todos, handleComplete}){
+//     return(
+//         <div>
+//             <h2>Todo List</h2>
+
+//             {todos.map((todo) => (
+//                 <div key={todo.id}>
+//                     <span style={{textDecoration: todo.compleated ? "line-through" : "none", marginRight: "10px"}}>{todo.title}</span>
+
+//                     {!todo.completed && (<button onClick={()=>{handleComplete(todo.id)}}>Complete</button>)}
+
+//                     {todo.completed && <span></span>}
+//                 </div>
+//             ))}
+//         </div>
+//     )
+// }
