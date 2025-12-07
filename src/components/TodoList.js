@@ -9,10 +9,10 @@ export default function TodoList({ todos, handleComplete }) {
         {todos.map((todo) => (
           <li key={todo.id}>
             <span
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-                marginRight: "10px",
-              }}
+              // style={{
+              //   textDecoration: todo.completed ? "line-through" : "none",
+              //   marginRight: "10px",
+              // }}
             >
               {todo.title}
             </span>
