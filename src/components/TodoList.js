@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function TodoList({ todos, handleComplete }) {
-  const hideButtons = todos.some(todo => todo.completed);
+
+  const [clicked, setClicked] = useState(false);
+
+  function handleClick(id) {
+    handleComplete(id);
+    setClicked(true); // hide all buttons AFTER click
+  }
+
   return (
     <div>
       <h2>Todo List</h2>
@@ -9,17 +16,12 @@ export default function TodoList({ todos, handleComplete }) {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <span
-              // style={{
-              //   textDecoration: todo.completed ? "line-through" : "none",
-              //   marginRight: "10px",
-              // }}
-            >
-              {todo.title}
-            </span>
+            {todo.title}
 
-            {!hideButtons && (
-              <button onClick={() => handleComplete(todo.id)}>Complete</button>
+            {!clicked && (
+              <button onClick={() => handleClick(todo.id)}>
+                Complete
+              </button>
             )}
           </li>
         ))}
