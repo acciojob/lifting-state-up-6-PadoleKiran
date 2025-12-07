@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function TodoList({ todos, handleComplete }) {
+  const hideButtons = todos.some(todo => todo.completed);
   return (
     <div>
       <h2>Todo List</h2>
@@ -17,7 +18,7 @@ export default function TodoList({ todos, handleComplete }) {
               {todo.title}
             </span>
 
-            {!todo.completed && (
+            {!hideButtons && (
               <button onClick={() => handleComplete(todo.id)}>Complete</button>
             )}
           </li>
